@@ -71,6 +71,10 @@
 			 	//console.log(rand);
 			 		result.push(data[rand]);
 			 		data.splice(rand,1)
+
+			 		// var temp = data[i]
+			 		//data[i] = rand;
+			 		//data[rand] = temp;
 				}
 	         return result;
 	            },	         
@@ -81,6 +85,8 @@
 	         var result = [];
 
 	         while(value > 0)
+
+
 	         	{
 			 	var rand = Math.floor((Math.random()*data.length));
 			 	result.push( data[rand]);
@@ -148,15 +154,66 @@
 	     		return results;
 
 	            },
-	      
+
+	         	each: function (arr,action){
+
+	         		for(var i = 0; i < arr.length; i++)
+	         		{
+	         		action(arr[i]);
+	         		}
+
+	         		},
+
+	         	compact: function (arr){
+
+	         		for(var i = 0; i < arr.length; i++)
+	         		{
+	         		if (arr[i] == null)
+	         		{
+	         			    arr.splice(i,1);
+	         		}
+	         		}
+	         		return arr;
+	                },
+
+	         map: function (arr,action){
+
+	         	for(var i =0; i<arr.length; i++)
+	         	{
+	         		arr[i] = action(arr[i]);
+	         		
+	         	}
+	         	return arr;
+	         },
+	      	
+	      	 filter: function (arr,filter){
+	      	 	var result = [];
+
+	      	 	for(var i = 0; i<arr.length; i++)
+	      	 	{
+
+	      	 		if(filter(arr[i]) === true)
+	      	 		{
+	      	 			result.push(arr[i]);
+	      	 		}
+
+	      	 	}
+	      	 	return result;
+	      	 },
+
 	      };
 
 	})();
 
-var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
+	//var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
 	//console.log( _.max([1,2,3,4,5,10]));
 	//console.log(_.sample([1, 2, 3, 4, 5, 6]));
-	console.log(_.pluck(stooges, 'name'));
-	//console.log(_.shuffle([1, 2, 3, 4, 5, 6]));
+	//console.log(_.pluck(stooges, 'name'));
+	//console.log(_.compact([1, "hello", undefined,3, undefined]));
+	//_.each([1, 2, 3], console.log);
+	//var evens = _.filter([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; });
+	//console.log(evens);
+    //console.log(_.map(["dogs", "before", "cats"], function(str){ return str.toUpperCase(); }));
+
 
 
