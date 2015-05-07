@@ -1,3 +1,70 @@
+
+	module.exports = {
+		average: function (data) { 
+
+	         var i = 0;
+	         var total = 0;
+	         while (i<data.length)
+	         	{
+	         	total += data[i];
+	         	i++;
+	         	}
+	         return (total/data.length);
+
+	     },
+	       first: function (data) {
+
+	         	return data[0];
+	          	},
+	     max: function (data) { 
+
+	         var i = 0;
+	         var max = 0;
+	         while (i<data.length)
+	         	{
+	         	if (data[i] > max)
+	         	max = data[i];
+	         	i++;
+	         	}
+	         return (max);
+
+	         	},
+
+	         	  min: function(data) { 
+
+	         var i = 0;
+	         var min = data[0];
+	         while (i<data.length)
+	        	 {
+	         	if (data[i] < min)
+	         	min = data[i];
+	         	i++;
+	         	}
+	         return (min);
+
+	        	 },
+	        	 last: function(data) { 
+	         	return data[data.length-1];
+	        	 },
+	        	 contains: function(data,value) { 
+
+	         var i = 0;
+	         
+	         while (i<data.length)
+	         	{
+	         	if (data[i] === value)
+	         	{
+	         		return true;
+	         	}
+
+	         	i++;
+	         	}
+	         return false;
+
+	        	 },
+	};
+	
+
 	var _ = (function() {
 	     return {
 	         average: function (data) { 
@@ -189,7 +256,7 @@
 	      	 filter: function (arr,filter){
 	      	 	var result = [];
 
-	      	 	for(var i = 0; i<arr.length; i++)
+	      	 	_.each(arr,function(i)
 	      	 	{
 
 	      	 		if(filter(arr[i]) === true)
@@ -197,21 +264,21 @@
 	      	 			result.push(arr[i]);
 	      	 		}
 
-	      	 	}
+	      	 	});
 	      	 	return result;
 	      	 },
 
 	      };
 
 	})();
-
+    
 	//var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
 	//console.log( _.max([1,2,3,4,5,10]));
 	//console.log(_.sample([1, 2, 3, 4, 5, 6]));
 	//console.log(_.pluck(stooges, 'name'));
 	//console.log(_.compact([1, "hello", undefined,3, undefined]));
 	//_.each([1, 2, 3], console.log);
-	//var evens = _.filter([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; });
+	//var evens = _.filter([1, 2, 3, 4, 5, 6,8], function(num){ return num % 2 == 0; });
 	//console.log(evens);
     //console.log(_.map(["dogs", "before", "cats"], function(str){ return str.toUpperCase(); }));
 
